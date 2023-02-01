@@ -1,0 +1,48 @@
+from tkinter import *
+from tkinter.messagebox import *
+from datetime import date
+
+t = str(date.today())
+making_code = ""
+code_arret = ""
+
+for i in range(len(t)):
+    if t[i] != "-":
+        making_code += t[i]
+
+for j in range(0, 8, 2):
+    code_arret += making_code[j]
+
+def disable_event():
+    pass
+
+def get_code():
+    code_given = zone_texte.get()
+    if code_given == code_arret:
+        screen.destroy()
+    else:
+        screen.withdraw()
+        showerror("ERROR","le code renseigné n'est pas le bon")
+        screen.deiconify()
+
+screen = Tk()
+screen.eval('tk::PlaceWindow . center')
+screen.resizable(False, False)
+screen.attributes("-topmost", True)
+
+texte = Label(screen, text="code d'arrêt")
+zone_texte = Entry(screen, show="*", width=4)
+zone_texte.focus()
+submit = Button(screen, text="submit", command=get_code)
+
+
+texte.pack()
+zone_texte.pack()
+submit.pack()
+
+screen.overrideredirect(True)
+
+screen.bind('<Return>',lambda event:get_code())
+
+screen.protocol("WM_DELETE_WINDOW", disable_event)
+screen.mainloop()
