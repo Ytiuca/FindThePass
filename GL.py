@@ -26,7 +26,8 @@ def get_code():
         screen.deiconify()
 
 screen = Tk()
-screen.eval('tk::PlaceWindow . center')
+screen.geometry(f"{screen.winfo_screenwidth()}x{screen.winfo_screenheight()}")
+# screen.eval('tk::PlaceWindow . center')
 screen.resizable(False, False)
 screen.attributes("-topmost", True)
 
