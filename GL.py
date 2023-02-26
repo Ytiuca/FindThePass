@@ -1,5 +1,4 @@
 from tkinter import *
-from tkinter.messagebox import *
 from datetime import date
 
 t = str(date.today())
@@ -21,9 +20,9 @@ def get_code():
     if code_given == code_arret:
         screen.destroy()
     else:
-        screen.withdraw()
-        showerror("ERROR","le code renseigné n'est pas le bon")
-        screen.deiconify()
+        label = Label(screen, text="ERREUR MON AMI ! REESSAYE")
+        label.pack()
+        screen.after(2000,lambda:label.destroy())
 
 screen = Tk()
 screen.geometry(f"{screen.winfo_screenwidth()}x{screen.winfo_screenheight()}")
