@@ -1,3 +1,7 @@
 *.pdf
 test.py
 *.exe
+__pycache__
+*.spec
+build
+dist
