@@ -1,8 +1,5 @@
 import tkinter as tk
 from datetime import date
-from logger import Logger
-
-LOGGER = Logger()
 
 
 def computeCode() -> str:
